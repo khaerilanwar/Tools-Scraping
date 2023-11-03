@@ -1,7 +1,7 @@
 import time
 import math
 import requests
-from database import Database
+from libs.database import Database
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -14,10 +14,10 @@ db = Database("localhost", "root", "", "dinkes")
 
 # Define requirements url to scrapping process
 url_target = "https://ekohort.kemkes.go.id/login.php"
-url_login = "https://ekohort.kemkes.go.id/administrator/auth/loginJS"
-url_after_login = "https://ekohort.kemkes.go.id/administrator/user/profile"
-url_data_anak = "https://ekohort.kemkes.go.id/administrator/rf_m_bayi"
-url_page_data = "https://ekohort.kemkes.go.id/administrator/rf_m_bayi/index/60?pilihan=&filter=&pilihan=null&tahun=null"
+url_login = "https://ekohort.kemkes.go.id/xxxxxx"
+url_after_login = "https://ekohort.kemkes.go.id/xxxxxxxxxx"
+url_data_anak = "https://ekohort.kemkes.go.id/xxxxxxxxx"
+url_page_data = "https://ekohort.kemkes.go.id/xxxxxxxxx"
 
 # Define chrome options
 chrome_options = Options()
@@ -39,10 +39,10 @@ driver.implicitly_wait(10)
 
 # Melakukan Login dengan Method Post Requests
 data_login = {
-    "prov_id": "33",
-    "kab_id": "3329",
-    "username": "dinkes",
-    "password": "123456",
+    "prov_id": "xx",
+    "kab_id": "xxxx",
+    "username": "xxxxx",
+    "password": "xxxxxxx",
 }
 
 # Kirim permintaan POST
@@ -190,9 +190,7 @@ for x in range(much_page):
                 db.insert("data_nakes", clean_nakes_data["nakes"])
         except:
             pass
-    driver.get(
-        f"https://ekohort.kemkes.go.id/administrator/rf_m_bayi/index/{num_data_page}?pilihan=&filter=&pilihan=null&tahun=null"
-    )
+    driver.get(f"https://ekohort.kemkes.go.id/xxxxx/{num_data_page}?xxxxxxx")
     num_data_page += 10
 
 print("Program selesai, menutup program....")
